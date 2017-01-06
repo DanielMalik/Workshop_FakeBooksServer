@@ -81,30 +81,13 @@ $('body').on("click", ".button-more", function(event) {
 
 		    }
 		    )
-// nawiasy button more
-});
-//
-//function formValidation (isbn) {
-//  isbn = isbn.replace(/[^\dX]/gi, '');
-//  if(isbn.length != 10){
-//    return false;
-//  }
-//  var chars = isbn.split('');
-//  if(chars[9].toUpperCase() == 'X'){
-//    chars[9] = 10;
-//  }
-//  var sum = 0;
-//  for (var i = 0; i < chars.length; i++) {
-//    sum += ((10-i) * parseInt(chars[i]));
-//  };
-//  return ((sum % 11) == 0);
-//}
 
+});
 
 
 $("form").on("submit", function(e) {
 
-//    $('#isbnForm').formValidation($("input").eq(2).val());
+
     console.log(e.target);
 
     var $newTitle = $("input").eq(0).val();
@@ -118,39 +101,47 @@ $("form").on("submit", function(e) {
     var $newGenre = $("input").eq(4).val();
     console.log($newGenre);
     var isOK = true;
+    console.log("nadanie " + isOK);
 
     if ($newTitle.length < 1  && $newAuthor.length < 1  && $newPublisher.length < 1) {
-        isOk = false;
+        isOK = false;
+        console.log("zmiana " + isOK);
         alert("Form error. Text inputs too short.");
+
         }
 
-    if (isOK === false) {
+    if (isOK == false) {
+    e.preventDefault();
+    alert("form error.");
 
-		e.preventDefault();
-
-	    }
-	else if (isOK === true) {
-
-	    //JSON.parse("{'author': $newAuthor, 'title': $newTitle, 'isbn': $newISBN, 'publisher': $newPublisher, 'genre': $newGenre}");
-
+    }
+	else if (isOK == true) {
+	console.log("czy true " + isOK);
 	    $.ajax(
 	    {
 
 	    url:  "http://127.0.0.1:8000/book/",
 	    type: "POST",
-	    data: {'author': $newAuthor, 'title': $newTitle, 'isbn': $newISBN, 'publisher': $newPublisher, 'genre': $newGenre}
-
+	    data: {'author': $newAuthor, 'title': $newTitle, 'isbn': $newISBN, 'publisher': $newPublisher, 'genre': $newGenre},
+        //success: function(){ alert("book adaed"); },
+        //error: function(){ alert("error");}
 	    }
-	    ).done(
+	    )
+	    .done(
 	    function(json) {
 
+         alert("Book added");
+	    }
+	    ).always(
+	    function(json) {
 
+         alert("Bookk added");
 	    }
 	    )
 
-		alert("Book added");
+
 		}
-//nawiasy form
+
 });
 
 $('body').on("click", ".button-delete", function(event) {
@@ -174,10 +165,10 @@ $('body').on("click", ".button-delete", function(event) {
 
 		    }
 		    )
-// nawiasy button delete
+
 });
 
-//ostatnie nawiasy
+
 	});
 
 
