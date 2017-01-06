@@ -5,8 +5,14 @@
   <meta charset="UTF-8">
   <title></title>
    <link rel="stylesheet" href="style.css">
-  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+        integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
+        crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="app.js"></script>
 
@@ -16,11 +22,24 @@
 <body>
 
   <form mothod="POST" action="#" id="isbnForm" data-fv-framework="bootstrap">
-    <label>Title: <input id="newTitle" name="newTitle" type="text"></label>
-    <label>Author: <input id="newAuthor" name="newAuthor" type="text"></label>
-    <label>ISBN: <input id="newISBN" name="newISBN" type="text"></label>
-    <label>Publisher: <input id="newPublisher" name="newPublisher" type="text"></label>
-    <label>Genre: <input id="genre" name="genre" type="number" min="1" max="10"></label>
+    <label>Title: <input id="newTitle" name="newTitle" type="text" class="form-control"></label>
+    <label>Author: <input id="newAuthor" name="newAuthor" type="text" class="form-control"></label>
+    <label>ISBN: <input id="newISBN" name="newISBN" type="text" class="form-control"></label>
+    <label>Publisher: <input id="newPublisher" name="newPublisher" type="text" class="form-control"></label>
+    <label>Genre: <select class="form-control" id="genre" name="genre">
+      <option disabled selected value> -- select genre -- </option>
+      <option value="1">Drama</option>
+      <option value="2">Crime</option>
+      <option value="3">Sci-Fi</option>
+      <option value="4">Fantasy</option>
+      <option value="5">Satire</option>
+      <option value="6">Romance</option>
+      <option value="7">Horror</option>
+      <option value="8">Self Help</option>
+      <option value="9">Non-fiction</option>
+      <option value="10">Fantasy</option>
+    </select>
+    </label>
     <button type="submit" value="Submit" class="btn btn-primary">Add new book</button>
 
   </form>

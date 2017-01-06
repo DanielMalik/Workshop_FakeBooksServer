@@ -17,8 +17,8 @@ function main() {
             var $bookTitle = $("<p>", {"data-id": json[i].id, class: "book-title"});
 
             var $div = $("<div>");
-            var $button = $("<button>", {"data-id": json[i].id, class: "button-more"});
-            var $buttonDel = $("<button>", {"data-id": json[i].id, class: "button-delete"});
+            var $button = $("<button>", {"data-id": json[i].id, class: "button-more btn btn-secondary"});
+            var $buttonDel = $("<button>", {"data-id": json[i].id, class: "button-delete btn btn-danger"});
             $button.text("Show Publisher");
             $buttonDel.text("Delete this book");
             var $bookAuthor = $("<p>");
@@ -98,25 +98,25 @@ $("form").on("submit", function(e) {
     console.log($newISBN);
     var $newPublisher = $("input").eq(3).val();
     console.log($newPublisher);
-    var $newGenre = $("input").eq(4).val();
+    var $newGenre = $("select").val();
     console.log($newGenre);
+
     var isOK = true;
-    console.log("nadanie " + isOK);
+
 
     if ($newTitle.length < 1  && $newAuthor.length < 1  && $newPublisher.length < 1) {
         isOK = false;
-        console.log("zmiana " + isOK);
+
         alert("Form error. Text inputs too short.");
 
         }
 
     if (isOK == false) {
     e.preventDefault();
-    alert("form error.");
+
 
     }
 	else if (isOK == true) {
-	console.log("czy true " + isOK);
 	    $.ajax(
 	    {
 
@@ -132,14 +132,7 @@ $("form").on("submit", function(e) {
 
          alert("Book added");
 	    }
-	    ).always(
-	    function(json) {
-
-         alert("Bookk added");
-	    }
 	    )
-
-
 		}
 
 });
