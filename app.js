@@ -35,8 +35,9 @@ function main() {
 
             $div.append($div2);
             $div.append($button);
-            $div.append($div3);
             $div.append($buttonDel);
+            $div.append($div3);
+            //$div.append($buttonDel);
 
             $div.attr("id", json[i].id);
 			$section.append($div);
@@ -67,6 +68,7 @@ $('body').on("click", ".button-more", function(event) {
 		    function(json) {
 
 		    console.log(json.title);
+		    self = $(self).next();
 		    $(self).next().empty();
 		    var p1 = $("<p>");
 		    var p2 = $("<p>");
