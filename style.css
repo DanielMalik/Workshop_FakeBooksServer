@@ -15,3 +15,11 @@ display: inline-flex
 .button-delete {
 display: inline-flex
 }
+div {
+margin: 12px;
+padding: 3px;
+border:  1px solid black}
+
+form {
+margin: 12px;
+}

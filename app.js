@@ -30,7 +30,7 @@ function main() {
 
             $div2.append($bookTitle);
             $div2.append($bookAuthor);
-            $div2.append($button);
+            //$div2.append($button);
 
 
             $div.append($div2);
