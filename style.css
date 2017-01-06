@@ -6,3 +6,12 @@ display: none
 
 display: none
 }
+
+.button-more {
+display: inline-flex
+}
+
+
+.button-delete {
+display: inline-flex
+}
