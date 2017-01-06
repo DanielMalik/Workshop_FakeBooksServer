@@ -16,21 +16,20 @@ function main() {
             var $section = $("#book-list").detach();
             var $bookTitle = $("<p>", {"data-id": json[i].id, class: "book-title"});
             var $bookAuthor = $("<p>");
-            var $bookISBN = $("<p>");
+
             var $div = $("<div>");
             var $button = $("<button>", {"data-id": json[i].id, class: "button-more"});
             $button.text("Show Publisher");
             var $div2 = $("<div class='book-title'>");
-            var $div3 = $("<div class='book-publisher'>");
+            var $div3 = $("<div class='book-publisherInfo'>");
 
 			$bookTitle.html("<strong>" + json[i].title + "</strong>");
 			$bookAuthor.html(json[i].author);
-			$bookISBN.html(json[i].isbn);
 
-            $div.append($bookTitle);
-            $div.append($button);
+            $div2.append($bookTitle);
+            $div2.append($button);
             $div2.append($bookAuthor);
-            $div2.append($bookISBN);
+
             $div.append($div2);
             $div.append($button);
             $div.append($div3);
@@ -44,9 +43,41 @@ function main() {
 		        }
 		    }
 		);
-    }
+
+	};
+
 
 main();
 
+$('body').on("click", ".button-more", function(event) {
+
+    var self = this;
+    console.log(event.target);
+
+    $.ajax(
+                    {
+		        url: "http://127.0.0.1:8000/book/" + $(this).data("id") + "/",
+                type: "GET"
+                }
+		    ).done(
+		    function(json) {
+
+		    console.log(json.title);
+		    $(self).next().empty();
+		    var p1 = $("<p>");
+		    var p2 = $("<p>");
+		    p1.text("ISBN: " + json.isbn);
+		    $(self).next().append(p1);
+		    p2.text("Publisher: " + json.publisher);
+		    $(self).next().append(p2);
+		    $(self).next().slideToggle(1200);
+
+
+
+
+		    }
+		    )
+
+});
 	});
 
